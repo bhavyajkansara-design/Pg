@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7f2">
+  <title>Areca By the Vatica | Resident portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["DM Sans", "sans-serif"], display: ["Manrope", "sans-serif"] },
+          colors: {
+            forest: { 50: "#f0f5f0", 100: "#dce9dc", 500: "#477650", 600: "#376442", 700: "#2b5035", 800: "#203c29", 900: "#172d20" },
+            leaf: "#87a77b",
+            sand: "#f5f7f2",
+            gold: "#d8ae68"
+          },
+          boxShadow: { soft: "0 12px 40px rgba(31, 52, 36, .07)" }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body { font-family: "DM Sans", sans-serif; }
+    h1, h2, h3, .display { font-family: "Manrope", sans-serif; }
+    .nav-link.active { background: rgba(255,255,255,.11); color: #fff; }
+    .nav-link.active i { color: #c9d9a8; }
+    .view { display: none; }
+    .view.active { display: block; animation: enter .25s ease-out; }
+    .app-screen { display: none; }
+    .app-screen.active { display: block; }
+    .login-screen { display: none; }
+    .login-screen.active { display: flex; }
+    @keyframes enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="min-h-screen bg-sand text-slate-700 antialiased">
+  <section id="login-screen" class="login-screen active min-h-screen items-center justify-center overflow-hidden bg-[#f5f7f2] p-4 sm:p-8">
+    <div class="grid w-full max-w-6xl overflow-hidden rounded-[2rem] bg-white shadow-[0_30px_90px_rgba(25,45,29,.14)] lg:min-h-[690px] lg:grid-cols-[1.05fr_.95fr]">
+      <div class="relative hidden min-h-[620px] overflow-hidden bg-forest-900 p-12 text-white lg:flex lg:flex-col lg:justify-between">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_14%_12%,rgba(160,190,126,.36),transparent_34%),radial-gradient(ellipse_at_83%_83%,rgba(78,119,76,.35),transparent_40%)]"></div>
+        <div class="absolute -right-32 top-20 h-96 w-96 rounded-full border border-white/10"></div>
+        <div class="absolute -right-16 top-36 h-64 w-64 rounded-full border border-white/10"></div>
+        <div class="relative z-10 flex items-center gap-3">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl text-[#d3dfa8] ring-1 ring-white/15"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+          <span><span class="display block text-lg font-extrabold tracking-tight">ARECA</span><span class="block text-[9px] font-semibold uppercase tracking-[.25em] text-white/55">By the Vatica</span></span>
+        </div>
+        <div class="relative z-10 max-w-md">
+          <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.17em] text-[#d7e3bb]"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> A better kind of stay</span>
+          <h1 class="display text-4xl font-extrabold leading-[1.15] tracking-tight xl:text-5xl">Feel at home.<br><span class="text-[#c6d6a0]">Grow at your pace.</span></h1>
+          <p class="mt-5 max-w-sm text-sm leading-7 text-white/65">Your thoughtful little corner of the city. A place to settle in, find your rhythm, and feel right at home.</p>
+        </div>
+        <div class="relative z-10 flex items-center gap-3 border-t border-white/10 pt-5 text-xs text-white/55">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[#d7e3bb]"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+          <span>Thoughtful living, made simple.<br><span class="text-white/35">Your Areca resident portal</span></span>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-14">
+        <div class="mb-8 flex items-center gap-3 lg:hidden">
+          <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-forest-800 text-lg text-[#d3dfa8]"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+          <span><span class="display block font-extrabold text-forest-900">ARECA</span><span class="block text-[9px] font-semibold uppercase tracking-[.22em] text-slate-400">By the Vatica</span></span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-[.19em] text-forest-600">Welcome to your home</p>
+        <h2 class="display mt-2 text-3xl font-extrabold tracking-tight text-slate-900">Sign in to Areca</h2>
+        <p class="mt-2 text-sm text-slate-500">Choose your portal and pick up where you left off.</p>
+
+        <div class="mt-7 grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1.5" role="tablist" aria-label="Choose login type">
+          <button type="button" class="login-tab rounded-xl bg-white px-3 py-3 text-sm font-bold text-forest-800 shadow-sm transition" data-role="student" role="tab" aria-selected="true"><i class="fa-solid fa-user-graduate mr-2" aria-hidden="true"></i>Student</button>
+          <button type="button" class="login-tab rounded-xl px-3 py-3 text-sm font-semibold text-slate-500 transition hover:text-slate-800" data-role="admin" role="tab" aria-selected="false"><i class="fa-solid fa-user-shield mr-2" aria-hidden="true"></i>Admin</button>
+        </div>
+        <form id="login-form" class="mt-6 space-y-4">
+          <div>
+            <label for="login-email" class="mb-2 block text-xs font-bold text-slate-600">Email address</label>
+            <div class="relative"><i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i><input id="login-email" type="email" required autocomplete="username" placeholder="you@example.com" class="w-full rounded-xl border border-slate-200 bg-white py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"></div>
+          </div>
+          <div>
+            <div class="mb-2 flex items-center justify-between"><label for="login-password" class="text-xs font-bold text-slate-600">Password</label><span class="text-[10px] font-medium text-slate-400">Demo access</span></div>
+            <div class="relative"><i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i><input id="login-password" type="password" required autocomplete="current-password" placeholder="Enter your password" class="w-full rounded-xl border border-slate-200 bg-white py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"></div>
+          </div>
+          <p id="login-error" class="hidden rounded-xl bg-rose-50 px-3 py-2.5 text-xs font-semibold text-rose-700" role="alert"></p>
+          <button type="submit" class="group flex w-full items-center justify-center gap-2 rounded-xl bg-forest-800 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-forest-900/15 transition hover:bg-forest-700 focus:outline-none focus:ring-4 focus:ring-forest-100">Sign in to your portal <i class="fa-solid fa-arrow-right text-xs transition group-hover:translate-x-1" aria-hidden="true"></i></button>
+        </form>
+
+        <div class="mt-6 rounded-xl border border-forest-100 bg-forest-50/70 p-3.5">
+          <p class="text-[10px] font-bold uppercase tracking-[.13em] text-forest-700"><i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i> Demo sign-in</p>
+          <p id="demo-credentials" class="mt-1.5 text-xs leading-5 text-slate-600">Student: <span class="font-semibold">aditi@areca.in</span> / <span class="font-semibold">aditi123</span></p>
+          <p class="mt-1 text-[10px] leading-4 text-slate-500">Demo only — this browser-based sign-in is not secure authentication.</p>
+        </div>
+        <p class="mt-6 text-center text-[10px] text-slate-400">© 2026 Areca By the Vatica · Made for better everyday living</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="app-screen" class="app-screen min-h-screen">
+    <div id="sidebar-backdrop" class="fixed inset-0 z-30 hidden bg-forest-950/55 lg:hidden"></div>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-[270px] -translate-x-full flex-col bg-forest-900 px-5 py-6 text-slate-300 transition-transform duration-300 lg:translate-x-0" aria-label="Main navigation">
+      <div class="mb-9 flex items-center justify-between px-2">
+        <a href="#" class="flex items-center gap-3" aria-label="Areca By the Vatica home">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-lg text-[#cfdda8] ring-1 ring-white/10"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+          <span><span class="display block text-base font-extrabold tracking-tight text-white">ARECA</span><span class="block text-[9px] font-semibold uppercase tracking-[.2em] text-slate-400">By the Vatica</span></span>
+        </a>
+        <button id="close-sidebar" class="rounded-lg p-2 text-slate-400 hover:bg-white/10 hover:text-white lg:hidden" aria-label="Close navigation"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="mb-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+        <p id="sidebar-role" class="text-[9px] font-bold uppercase tracking-[.17em] text-[#c2d49a]">Student portal</p>
+        <p class="mt-1 text-xs text-white/60">Everything at your fingertips</p>
+      </div>
+      <p class="mb-3 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Your space</p>
+      <nav id="navigation" class="space-y-1" aria-label="Portal sections"></nav>
+      <div class="mt-auto">
+        <div class="mb-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-[#cfdda8]/10 text-[#cfdda8]"><i class="fa-regular fa-heart" aria-hidden="true"></i></div>
+          <p class="text-sm font-bold text-white">Here for you</p>
+          <p class="mt-1 text-xs leading-5 text-slate-400">Need help? Reach out to the Areca care team.</p>
+          <a href="mailto:care@areca.example" class="mt-3 inline-flex items-center gap-2 text-xs font-bold text-[#cfdda8] hover:text-white">Contact the warden <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i></a>
+        </div>
+        <div class="flex items-center gap-3 border-t border-white/10 px-2 pt-5">
+          <span id="avatar-initial" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#d7e3bb] text-sm font-extrabold text-forest-900">AS</span>
+          <div class="min-w-0 flex-1"><p id="profile-name" class="truncate text-sm font-semibold text-white">Aditi Sharma</p><p id="profile-subtitle" class="text-xs text-slate-400">Room B-204</p></div>
+          <button id="logout-button" class="rounded-lg p-2 text-slate-400 transition hover:bg-white/10 hover:text-white" aria-label="Sign out" title="Sign out"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="min-h-screen lg:pl-[270px]">
+      <header class="sticky top-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+        <div class="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 sm:px-7 lg:px-10">
+          <div class="flex items-center gap-3">
+            <button id="open-sidebar" class="rounded-xl border border-slate-200 p-2.5 text-slate-600 hover:bg-slate-50 lg:hidden" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            <div><p id="header-date" class="text-xs font-medium text-slate-400"></p><p class="text-sm font-bold text-slate-800">Areca <span class="mx-1 text-slate-300">/</span> <span id="breadcrumb">Dashboard</span></p></div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span id="header-role" class="hidden rounded-full bg-forest-50 px-3 py-1.5 text-[10px] font-bold text-forest-700 sm:inline-flex">Student portal</span>
+            <span id="header-avatar" class="flex h-9 w-9 items-center justify-center rounded-full bg-forest-100 text-xs font-extrabold text-forest-800">AS</span>
+          </div>
+        </div>
+      </header>
+      <main class="mx-auto max-w-[1440px] px-4 py-7 sm:px-7 sm:py-9 lg:px-10">
+        <div id="content"></div>
+        <footer class="mt-10 border-t border-slate-200 pt-5 text-center text-xs text-slate-400">Rooted in comfort <span class="mx-1 text-forest-500">✦</span> Areca By the Vatica</footer>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-50 hidden w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-xl bg-forest-900 px-4 py-3 text-sm font-medium text-white shadow-xl" role="status" aria-live="polite"></div>
+
+  <script>
+    const STORAGE_KEY = "areca-vatica-portal-v1";
+    const adminAccount = { email: "admin@areca.in", password: "areca123", name: "Areca Admin", room: "Property manager" };
+    const initialData = {
+      residents: [{ name: "Aditi Sharma", email: "aditi@areca.in", password: "aditi123", room: "B-204", rent: 8500 }],
+      complaints: [
+        { id: "HH-0248", residentEmail: "aditi@areca.in", category: "Electrical", description: "Ceiling light flickers occasionally in the evening.", date: "15 Nov 2026", status: "Pending" },
+        { id: "HH-0219", residentEmail: "aditi@areca.in", category: "Plumbing", description: "Bathroom tap was leaking near the sink.", date: "10 Nov 2026", status: "Resolved" }
+      ],
+      notices: [
+        { id: "notice-1", tag: "Important", title: "Water timing changed today", body: "Overhead tank maintenance is scheduled this evening. Water will be available from 6:00 PM to 8:00 PM. Please plan accordingly.", date: "17 Nov 2026", author: "Rakesh, Warden" },
+        { id: "notice-2", tag: "Facilities", title: "Wi-Fi maintenance on Wednesday", body: "Our internet provider will carry out routine maintenance on 19 November between 11:00 AM and 12:00 PM. Wi-Fi may be briefly unavailable during this window.", date: "15 Nov 2026", author: "Areca Management" },
+        { id: "notice-3", tag: "Community", title: "Join us for chai & board games", body: "Drop by the common room this Friday from 6:30 PM for chai, snacks and board games. Everyone is welcome.", date: "12 Nov 2026", author: "Your Areca team" }
+      ],
+      rentPaidBy: { "aditi@areca.in": false },
+      meal: { breakfast: "Poha, boiled eggs & fresh fruit", lunch: "Dal tadka, steamed rice & salad", snacks: "Vegetable pakora & ginger tea", dinner: "Paneer butter masala & jeera rice" }
+    };
+    let data = loadData();
+    let currentRole = "student";
+    let currentSection = "dashboard";
+    let currentResident = null;
+    let selectedLoginRole = "student";
+    let toastTimer;
+
+    function loadData() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return structuredClone(initialData);
+        const saved = JSON.parse(stored);
+        if (!saved || !Array.isArray(saved.complaints) || !Array.isArray(saved.notices) || !saved.meal) throw new Error("Saved portal data is invalid.");
+        const merged = { ...structuredClone(initialData), ...saved };
+        if (!Array.isArray(merged.residents) || merged.residents.length === 0) merged.residents = structuredClone(initialData.residents);
+        merged.rentPaidBy = merged.rentPaidBy || { "aditi@areca.in": Boolean(merged.rentPaid) };
+        merged.complaints = merged.complaints.map(item => ({ ...item, residentEmail: item.residentEmail || "aditi@areca.in" }));
+        return merged;
+      } catch (error) {
+        console.error("Could not load saved Areca portal data:", error);
+        return structuredClone(initialData);
+      }
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (error) {
+        console.error("Could not save Areca portal data:", error);
+        showToast("Changes could not be saved in this browser.");
+        return false;
+      }
+      return true;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.remove("hidden");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add("hidden"), 3500);
+    }
+
+    function setLoginRole(role) {
+      selectedLoginRole = role;
+      document.querySelectorAll(".login-tab").forEach(tab => {
+        const selected = tab.dataset.role === role;
+        tab.classList.toggle("bg-white", selected);
+        tab.classList.toggle("shadow-sm", selected);
+        tab.classList.toggle("font-bold", selected);
+        tab.classList.toggle("text-forest-800", selected);
+        tab.classList.toggle("text-slate-500", !selected);
+        tab.setAttribute("aria-selected", String(selected));
+      });
+      const account = role === "admin" ? adminAccount : data.residents[0];
+      document.getElementById("login-email").value = account.email;
+      document.getElementById("login-password").value = account.password;
+      document.getElementById("demo-credentials").innerHTML = role === "admin"
+        ? `Admin: <span class="font-semibold">${account.email}</span> / <span class="font-semibold">${account.password}</span>`
+        : "Use the email and password provided by your Areca admin.";
+      document.getElementById("login-error").classList.add("hidden");
+    }
+
+    function logIn(role, resident = null) {
+      currentRole = role;
+      currentResident = resident;
+      currentSection = "dashboard";
+      document.getElementById("login-screen").classList.remove("active");
+      document.getElementById("app-screen").classList.add("active");
+      document.getElementById("header-date").textContent = new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date());
+      const account = role === "admin" ? adminAccount : resident;
+      const initials = account.name.split(" ").map(part => part[0]).join("").slice(0, 2).toUpperCase();
+      document.getElementById("sidebar-role").textContent = `${role === "admin" ? "Admin" : "Student"} portal`;
+      document.getElementById("header-role").textContent = `${role === "admin" ? "Admin" : "Student"} portal`;
+      document.getElementById("profile-name").textContent = account.name;
+      document.getElementById("profile-subtitle").textContent = account.room;
+      document.getElementById("avatar-initial").textContent = initials;
+      document.getElementById("header-avatar").textContent = initials;
+      renderApp();
+      setSidebarOpen(false);
+    }
+
+    function logOut() {
+      document.getElementById("app-screen").classList.remove("active");
+      document.getElementById("login-screen").classList.add("active");
+      document.getElementById("login-error").classList.add("hidden");
+      setSidebarOpen(false);
+    }
+
+    const studentNavigation = [
+      ["dashboard", "Dashboard", "fa-grid-2"],
+      ["food", "Food & dining", "fa-utensils"],
+      ["payments", "Rent & payments", "fa-wallet"],
+      ["complaints", "Help & maintenance", "fa-screwdriver-wrench"],
+      ["notices", "Notice board", "fa-bullhorn"]
+    ];
+    const adminNavigation = [
+      ["dashboard", "Overview", "fa-grid-2"],
+      ["members", "Members", "fa-users"],
+      ["complaints", "Resident requests", "fa-screwdriver-wrench"],
+      ["notices", "Announcements", "fa-bullhorn"],
+      ["food", "Meal planner", "fa-utensils"],
+      ["payments", "Rent overview", "fa-wallet"]
+    ];
+
+    function goTo(section) {
+      currentSection = section;
+      renderApp();
+      setSidebarOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderApp() {
+      const links = currentRole === "admin" ? adminNavigation : studentNavigation;
+      const visibleComplaints = currentRole === "admin" ? data.complaints : data.complaints.filter(item => item.residentEmail === currentResident?.email);
+      document.getElementById("navigation").innerHTML = links.map(([id, label, icon]) => `<button class="nav-link ${currentSection === id ? "active" : ""} flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-semibold text-slate-400 transition hover:bg-white/10 hover:text-white" data-section="${id}"><i class="fa-solid ${icon} w-5 text-center text-slate-500" aria-hidden="true"></i>${label}${id === "complaints" && visibleComplaints.some(item => item.status === "Pending") ? `<span class="ml-auto rounded-full bg-white/10 px-2 py-0.5 text-[10px]">${visibleComplaints.filter(item => item.status === "Pending").length}</span>` : ""}</button>`).join("");
+      document.querySelectorAll(".nav-link").forEach(link => link.addEventListener("click", () => goTo(link.dataset.section)));
+      document.getElementById("breadcrumb").textContent = links.find(item => item[0] === currentSection)?.[1] || "Dashboard";
+      const content = document.getElementById("content");
+      if (currentRole === "admin") renderAdmin(content);
+      else renderStudent(content);
+      document.querySelectorAll("[data-go]").forEach(button => button.addEventListener("click", () => goTo(button.dataset.go)));
+      document.querySelectorAll("[data-pay]").forEach(button => button.addEventListener("click", showPaymentDemo));
+      document.querySelectorAll("[data-rent-email]").forEach(button => button.addEventListener("click", () => toggleResidentRent(button.dataset.rentEmail)));
+      document.querySelectorAll("[data-status-id]").forEach(select => select.addEventListener("change", () => updateComplaintStatus(select.dataset.statusId, select.value)));
+      document.querySelectorAll("[data-resolve-id]").forEach(button => button.addEventListener("click", () => updateComplaintStatus(button.dataset.resolveId, "Resolved")));
+      attachForms();
+    }
+
+    const sectionHeading = (eyebrow, title, description) => `<div class="mb-7"><p class="mb-2 text-xs font-bold uppercase tracking-[.17em] text-forest-600">${eyebrow}</p><h1 class="display text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">${title}</h1><p class="mt-2 text-sm text-slate-500">${description}</p></div>`;
+
+    function renderAdmin(target) {
+      if (currentSection === "dashboard") target.innerHTML = renderAdminDashboard();
+      else if (currentSection === "members") target.innerHTML = renderMembers();
+      else if (currentSection === "food") target.innerHTML = renderFood(true);
+      else if (currentSection === "payments") target.innerHTML = renderPayments(true);
+      else if (currentSection === "complaints") target.innerHTML = renderComplaints(true);
+      else target.innerHTML = renderNotices(true);
+    }
+
+    function renderAdminDashboard() {
+      const pending = data.complaints.filter(item => item.status === "Pending").length;
+      const newest = data.complaints.slice(0, 3);
+      const totalRent = data.residents.reduce((sum, resident) => sum + Number(resident.rent || 0), 0);
+      return `<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="mb-2 inline-flex items-center gap-2 rounded-full bg-forest-50 px-3 py-1 text-xs font-bold text-forest-700"><span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span> Your property at a glance</p><h1 class="display text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Good morning, Areca team <span aria-hidden="true">🌿</span></h1><p class="mt-2 text-sm text-slate-500">A calm home starts with thoughtful care. Here’s the latest resident activity.</p></div><span class="inline-flex items-center gap-2 self-start rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 shadow-sm sm:self-auto"><i class="fa-regular fa-calendar text-forest-600" aria-hidden="true"></i>${new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date())}</span></div>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft"><p class="text-sm font-semibold text-slate-500">Residents</p><p class="mt-3 text-2xl font-extrabold text-slate-900">${data.residents.length}</p><p class="mt-1 text-xs text-slate-400">Manage your Areca members</p><button data-go="members" class="mt-2 text-xs font-bold text-forest-700">Add a member <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft"><p class="text-sm font-semibold text-slate-500">Open requests</p><p class="mt-3 text-2xl font-extrabold text-slate-900">${pending}</p><p class="mt-1 text-xs text-slate-400">Waiting for the care team</p></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft"><p class="text-sm font-semibold text-slate-500">Monthly rent total</p><p class="mt-3 text-2xl font-extrabold text-slate-900">₹${totalRent.toLocaleString("en-IN")}</p><p class="mt-1 text-xs text-slate-400">Across ${data.residents.length} member${data.residents.length === 1 ? "" : "s"}</p></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft"><p class="text-sm font-semibold text-slate-500">Rent payments due</p><p class="mt-3 text-2xl font-extrabold text-amber-600">${data.residents.filter(resident => !data.rentPaidBy[resident.email]).length}</p><button data-go="payments" class="mt-1 text-xs font-bold text-forest-700">Manage rent <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+        </div>
+        <div class="mt-7 grid gap-5 xl:grid-cols-[1.25fr_.75fr]">
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6">
+            <div class="mb-5 flex items-center justify-between"><div><h2 class="display text-base font-extrabold text-slate-900">Resident requests</h2><p class="mt-1 text-xs text-slate-400">Recent issues to keep an eye on</p></div><button data-go="complaints" class="text-xs font-bold text-forest-700">View all <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></div>
+            ${newest.length ? `<div class="space-y-3">${newest.map(item => { const resident = data.residents.find(member => member.email === item.residentEmail); return `<div class="flex items-start justify-between gap-3 rounded-xl bg-sand p-4"><div class="min-w-0"><div class="flex items-center gap-2"><p class="text-sm font-bold text-slate-800">${escapeHtml(item.category)} · ${escapeHtml(item.id)}</p><span class="text-[10px] text-slate-400">Room ${escapeHtml(resident?.room || "—")}</span></div><p class="mt-1 truncate text-xs text-slate-500">${escapeHtml(item.description)}</p><p class="mt-2 text-[10px] text-slate-400">${escapeHtml(resident?.name || "Former resident")} · ${escapeHtml(item.date)}</p></div><select data-status-id="${escapeHtml(item.id)}" aria-label="Status for complaint ${escapeHtml(item.id)}" class="shrink-0 rounded-full border-0 ${item.status === "Pending" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-[10px] font-bold outline-none"><option ${item.status === "Pending" ? "selected" : ""}>Pending</option><option ${item.status === "Resolved" ? "selected" : ""}>Resolved</option></select></div>`; }).join("")}</div>` : `<p class="py-8 text-center text-sm text-slate-400">No resident requests yet.</p>`}
+          </article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="mb-5 flex items-center justify-between"><div><h2 class="display text-base font-extrabold text-slate-900">Latest announcement</h2><p class="mt-1 text-xs text-slate-400">Shared with residents</p></div><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-amber-700"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span></div>${data.notices.length ? `<div class="rounded-xl bg-sand p-4"><p class="text-[10px] font-bold uppercase tracking-wider text-forest-600">${escapeHtml(data.notices[0].tag)} · ${escapeHtml(data.notices[0].date)}</p><h3 class="mt-2 text-sm font-bold text-slate-800">${escapeHtml(data.notices[0].title)}</h3><p class="mt-1 text-xs leading-5 text-slate-500">${escapeHtml(data.notices[0].body)}</p></div>` : `<p class="rounded-xl bg-sand p-4 text-sm text-slate-500">No announcements yet.</p>`}<button data-go="notices" class="mt-4 text-xs font-bold text-forest-700">Post an update <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+        </div>`;
+    }
+
+    function renderStudent(target) {
+      if (currentSection === "dashboard") target.innerHTML = renderStudentDashboard();
+      else if (currentSection === "food") target.innerHTML = renderFood(false);
+      else if (currentSection === "payments") target.innerHTML = renderPayments(false);
+      else if (currentSection === "complaints") target.innerHTML = renderComplaints(false);
+      else target.innerHTML = renderNotices(false);
+    }
+
+    function renderMembers() {
+      const members = data.residents.map(resident => `<tr class="border-t border-slate-100"><td class="px-5 py-4"><p class="font-bold text-slate-800">${escapeHtml(resident.name)}</p><p class="mt-1 text-xs text-slate-400">${escapeHtml(resident.email)}</p></td><td class="px-5 py-4 text-slate-600">${escapeHtml(resident.room)}</td><td class="px-5 py-4 text-slate-600">₹${Number(resident.rent || 0).toLocaleString("en-IN")}</td><td class="px-5 py-4"><span class="rounded-full bg-forest-50 px-2.5 py-1 text-xs font-bold text-forest-700">Active</span></td></tr>`).join("");
+      return `${sectionHeading("Your Areca community", "Manage members", "Add as many resident accounts as you need. Each member can sign in with their own student credentials.")}<div class="grid items-start gap-5 xl:grid-cols-[.8fr_1.2fr]"><form id="member-form" class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-forest-50 text-forest-700"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div><h2 class="display text-base font-extrabold text-slate-900">Add a resident</h2><p class="mt-1 text-xs leading-5 text-slate-400">Create a new login and room profile for your member.</p><label class="mb-2 mt-5 block text-xs font-bold text-slate-600" for="member-name">Full name</label><input id="member-name" name="name" required maxlength="80" autocomplete="name" placeholder="e.g. Priya Patel" class="w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><label class="mb-2 mt-4 block text-xs font-bold text-slate-600" for="member-email">Email address (login)</label><input id="member-email" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="member@example.com" class="w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><label class="mb-2 mt-4 block text-xs font-bold text-slate-600" for="member-room">Room number</label><input id="member-room" name="room" required maxlength="30" placeholder="e.g. C-105" class="w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><label class="mb-2 mt-4 block text-xs font-bold text-slate-600" for="member-rent">Monthly rent (₹)</label><input id="member-rent" name="rent" type="number" min="0" step="1" required value="8500" class="w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><label class="mb-2 mt-4 block text-xs font-bold text-slate-600" for="member-password">Temporary password</label><input id="member-password" name="password" type="text" minlength="6" maxlength="72" required autocomplete="new-password" placeholder="At least 6 characters" class="w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><button type="submit" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-forest-800 px-4 py-3 text-sm font-bold text-white transition hover:bg-forest-700"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>Create member login</button><p class="mt-3 text-[10px] leading-4 text-slate-400">Share the login email and temporary password with the resident. Demo only: credentials are stored in this browser.</p></form><section class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-soft"><div class="flex items-center justify-between border-b border-slate-100 px-5 py-5"><div><h2 class="display font-extrabold text-slate-900">Resident accounts</h2><p class="mt-1 text-xs text-slate-400">Each member signs into their own student portal.</p></div><span class="rounded-full bg-forest-50 px-3 py-1 text-xs font-bold text-forest-700">${data.residents.length} ${data.residents.length === 1 ? "member" : "members"}</span></div><div class="overflow-x-auto"><table class="w-full min-w-[560px] text-left text-sm"><thead class="bg-slate-50 text-[10px] font-bold uppercase tracking-wider text-slate-400"><tr><th class="px-5 py-3">Member</th><th class="px-5 py-3">Room</th><th class="px-5 py-3">Monthly rent</th><th class="px-5 py-3">Account</th></tr></thead><tbody>${members}</tbody></table></div></section></div>`;
+    }
+
+    function renderStudentDashboard() {
+      const pending = data.complaints.filter(item => item.status === "Pending" && item.residentEmail === currentResident.email).length;
+      const rentPaid = Boolean(data.rentPaidBy[currentResident.email]);
+      return `<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="mb-2 inline-flex items-center gap-2 rounded-full bg-forest-50 px-3 py-1 text-xs font-bold text-forest-700"><span class="h-1.5 w-1.5 rounded-full bg-forest-500"></span> Your Areca home, at a glance</p><h1 class="display text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Welcome home, ${escapeHtml(currentResident.name)} <span aria-hidden="true">🌿</span></h1><p class="mt-2 text-sm text-slate-500">Here’s your day at Areca By the Vatica · <span class="font-semibold text-slate-700">Room ${escapeHtml(currentResident.room)}</span></p></div><span class="inline-flex items-center gap-2 self-start rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 shadow-sm sm:self-auto"><i class="fa-regular fa-calendar text-forest-600" aria-hidden="true"></i>${new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date())}</span></div>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="flex items-start justify-between"><div><p class="text-sm font-semibold text-slate-500">Rent status</p><p class="mt-3 text-2xl font-extrabold text-slate-900">₹${Number(currentResident.rent).toLocaleString("en-IN")} <span class="text-sm font-semibold ${rentPaid ? "text-forest-600" : "text-amber-600"}">${rentPaid ? "paid" : "due"}</span></p><p class="mt-1 text-xs text-slate-400">November rent · Due 5 Nov</p></div><span class="flex h-11 w-11 items-center justify-center rounded-xl ${rentPaid ? "bg-forest-50 text-forest-600" : "bg-amber-50 text-amber-600"}"><i class="fa-solid ${rentPaid ? "fa-circle-check" : "fa-indian-rupee-sign"}" aria-hidden="true"></i></span></div><button data-go="payments" class="mt-5 text-xs font-bold text-forest-700 hover:text-forest-900">View payment details <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="flex items-start justify-between"><div><p class="text-sm font-semibold text-slate-500">Open requests</p><p class="mt-3 text-2xl font-extrabold text-slate-900">${pending} <span class="text-sm font-semibold text-slate-400">active</span></p><p class="mt-1 text-xs text-slate-400">The Areca team is on it</p></div><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-50 text-violet-600"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span></div><button data-go="complaints" class="mt-5 text-xs font-bold text-forest-700 hover:text-forest-900">Track requests <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:col-span-2 sm:p-6 xl:col-span-1"><div class="flex items-start justify-between"><div><p class="text-sm font-semibold text-slate-500">Dinner tonight</p><p class="mt-3 text-xl font-extrabold text-slate-900">7:30 <span class="text-sm font-semibold text-slate-400">PM</span></p><p class="mt-1 text-xs text-slate-400">${escapeHtml(data.meal.dinner)}</p></div><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></span></div><button data-go="food" class="mt-5 text-xs font-bold text-forest-700 hover:text-forest-900">See today’s menu <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+        </div>
+        <div class="mt-7 grid gap-5 xl:grid-cols-[1.35fr_1fr]">
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="mb-5 flex items-center justify-between"><div><h2 class="display text-base font-extrabold text-slate-900">Today at Areca</h2><p class="mt-1 text-xs text-slate-400">Freshly prepared, thoughtfully served</p></div><button data-go="food" class="text-xs font-bold text-forest-700">Full menu <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></div><div class="space-y-4">${[["8:00 AM","Breakfast",data.meal.breakfast,"amber"],["1:00 PM","Lunch",data.meal.lunch,"emerald"],["5:00 PM","Snacks",data.meal.snacks,"orange"],["7:30 PM","Dinner",data.meal.dinner,"forest"]].map(([time,name,menu,color])=>`<div class="flex gap-4"><span class="w-16 shrink-0 pt-0.5 text-xs font-bold text-slate-500">${time}</span><div class="flex-1 border-l-2 border-${color}-200 pl-4"><p class="text-sm font-bold text-slate-800">${name}</p><p class="mt-1 text-xs text-slate-500">${escapeHtml(menu)}</p></div></div>`).join("")}</div></article>
+          <article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="mb-5 flex items-center justify-between"><div><h2 class="display text-base font-extrabold text-slate-900">From your warden</h2><p class="mt-1 text-xs text-slate-400">The latest around the house</p></div><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-amber-700"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span></div>${data.notices.length ? `<div class="rounded-xl bg-sand p-4"><div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-gold"></span><span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">${escapeHtml(data.notices[0].tag)}</span><span class="ml-auto text-[10px] text-slate-400">${escapeHtml(data.notices[0].date)}</span></div><h3 class="mt-3 text-sm font-bold text-slate-800">${escapeHtml(data.notices[0].title)}</h3><p class="mt-1 text-xs leading-5 text-slate-500">${escapeHtml(data.notices[0].body)}</p></div>` : `<p class="rounded-xl bg-sand p-4 text-sm text-slate-500">No new announcements.</p>`}<button data-go="notices" class="mt-4 text-xs font-bold text-forest-700">All announcements <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button></article>
+        </div>`;
+    }
+
+    function renderFood(isAdmin) {
+      const meals = [["breakfast","Breakfast","8:00 – 9:30 AM","fa-sun","amber"],["lunch","Lunch","1:00 – 2:30 PM","fa-cloud-sun","emerald"],["snacks","Evening snacks","5:00 – 6:00 PM","fa-mug-hot","orange"],["dinner","Dinner","7:30 – 9:00 PM","fa-moon","forest"]];
+      return `${sectionHeading(isAdmin ? "Keep everyone fuelled" : "Made fresh, every day", isAdmin ? "Meal planner" : "Today’s food menu", isAdmin ? "Update the shared menu so residents know what’s cooking." : "All meals are served in the common dining area.")}<div class="grid gap-4 sm:grid-cols-2">${meals.map(([key,label,time,icon,color])=>`<article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="flex items-center justify-between"><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-${color}-50 text-${color}-600"><i class="fa-solid ${icon}" aria-hidden="true"></i></span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-500">${time}</span></div><p class="mt-5 text-xs font-bold uppercase tracking-wider text-${color}-600">${label}</p>${isAdmin ? `<form class="meal-form mt-2 flex gap-2" data-meal="${key}"><input name="meal" maxlength="120" required value="${escapeHtml(data.meal[key])}" aria-label="${label} menu" class="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-forest-500"><button class="rounded-xl bg-forest-800 px-4 text-sm font-bold text-white hover:bg-forest-700">Save</button></form>` : `<h2 class="display mt-1 text-lg font-extrabold text-slate-900">${escapeHtml(data.meal[key])}</h2><p class="mt-2 text-sm leading-6 text-slate-500">${key === "dinner" ? "A cosy evening meal, prepared fresh for you." : "A freshly prepared favourite, served with care."}</p>`}</article>`).join("")}</div>${!isAdmin ? `<p class="mt-5 text-xs leading-5 text-slate-400"><i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i>Menu may change based on seasonal availability. Please inform the warden of dietary requirements.</p>` : ""}`;
+    }
+
+    function renderPayments(isAdmin) {
+      if (isAdmin) {
+        const total = data.residents.reduce((sum, resident) => sum + Number(resident.rent || 0), 0);
+        const paid = data.residents.filter(resident => data.rentPaidBy[resident.email]).length;
+        const rows = data.residents.map(resident => {
+          const isPaid = Boolean(data.rentPaidBy[resident.email]);
+          return `<tr class="border-t border-slate-100"><td class="px-5 py-4"><p class="font-bold text-slate-800">${escapeHtml(resident.name)}</p><p class="mt-1 text-xs text-slate-400">${escapeHtml(resident.email)} · Room ${escapeHtml(resident.room)}</p></td><td class="px-5 py-4">₹${Number(resident.rent).toLocaleString("en-IN")}</td><td class="px-5 py-4"><span class="rounded-full ${isPaid ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"} px-2.5 py-1 text-xs font-bold">${isPaid ? "Paid" : "Due"}</span></td><td class="px-5 py-4"><button data-rent-email="${escapeHtml(resident.email)}" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 hover:bg-slate-50">Mark ${isPaid ? "due" : "paid"}</button></td></tr>`;
+        }).join("");
+        return `${sectionHeading("Resident accounts", "Rent overview", "Track and update rent individually for each resident.")}<div class="mb-5 grid gap-4 sm:grid-cols-3"><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">Residents</p><p class="mt-2 text-2xl font-extrabold text-slate-900">${data.residents.length}</p></article><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">Monthly rent total</p><p class="mt-2 text-2xl font-extrabold text-slate-900">₹${total.toLocaleString("en-IN")}</p></article><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">Paid this month</p><p class="mt-2 text-2xl font-extrabold text-forest-600">${paid} / ${data.residents.length}</p></article></div><div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-soft"><div class="border-b border-slate-100 px-5 py-5"><h2 class="display font-extrabold text-slate-900">November 2026 rent</h2><p class="mt-1 text-xs text-slate-400">Select a resident’s status to share it with their student portal.</p></div><div class="overflow-x-auto"><table class="w-full min-w-[620px] text-left text-sm"><thead class="bg-slate-50 text-[10px] font-bold uppercase tracking-wider text-slate-400"><tr><th class="px-5 py-3">Resident</th><th class="px-5 py-3">Rent</th><th class="px-5 py-3">Status</th><th class="px-5 py-3">Update</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+      }
+      const resident = currentResident;
+      const due = !data.rentPaidBy[resident.email];
+      return `${sectionHeading("Your account", "Rent & payments", "Keep track of your monthly rent and payment history.")}<div class="mb-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]"><div class="overflow-hidden rounded-2xl bg-forest-900 p-6 text-white shadow-soft sm:p-8"><div class="flex items-start justify-between"><div><p class="text-sm font-medium text-white/55">November 2026 · Monthly rent</p><p class="mt-3 text-3xl font-extrabold tracking-tight">₹${Number(resident.rent).toLocaleString("en-IN")}</p><p class="mt-2 text-xs text-white/55">${due ? "Payment due date was 5 November 2026" : "Paid for November 2026"}</p></div><span class="rounded-full ${due ? "bg-amber-300/15 text-amber-200" : "bg-emerald-300/15 text-emerald-200"} px-3 py-1.5 text-xs font-bold">${due ? "Due" : "Paid"}</span></div><button data-pay class="mt-7 rounded-xl bg-[#c6d6a0] px-5 py-3 text-sm font-bold text-forest-900 transition hover:bg-[#d6e1bb]">Pay November rent <i class="fa-solid fa-arrow-right ml-1 text-xs" aria-hidden="true"></i></button></div><div class="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-soft"><p class="text-sm font-semibold text-slate-500">Resident details</p><dl class="mt-5 space-y-4"><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Resident</dt><dd class="font-bold text-slate-700">${escapeHtml(resident.name)}</dd></div><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Room</dt><dd class="font-bold text-slate-700">${escapeHtml(resident.room)}</dd></div><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Monthly rent</dt><dd class="font-bold text-slate-700">₹${Number(resident.rent).toLocaleString("en-IN")}</dd></div></dl></div></div><div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-soft"><div class="border-b border-slate-100 px-5 py-5"><h2 class="display font-extrabold text-slate-900">Payment history</h2><p class="mt-1 text-xs text-slate-400">Your recent rent payments</p></div><div class="overflow-x-auto"><table class="w-full min-w-[540px] text-left text-sm"><thead class="bg-slate-50 text-[10px] font-bold uppercase tracking-wider text-slate-400"><tr><th class="px-5 py-3">Month</th><th class="px-5 py-3">Amount</th><th class="px-5 py-3">Date paid</th><th class="px-5 py-3">Status</th></tr></thead><tbody><tr class="border-t border-slate-100"><td class="px-5 py-4 font-semibold text-slate-700">November 2026</td><td class="px-5 py-4">₹${Number(resident.rent).toLocaleString("en-IN")}</td><td class="px-5 py-4 text-slate-400">${due ? "—" : "17 Nov 2026"}</td><td class="px-5 py-4"><span class="rounded-full ${due ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-xs font-bold">${due ? "Due" : "Paid"}</span></td></tr>${["October","September","August"].map((month,index)=>`<tr class="border-t border-slate-100"><td class="px-5 py-4 font-semibold text-slate-700">${month} 2026</td><td class="px-5 py-4">₹${Number(resident.rent).toLocaleString("en-IN")}</td><td class="px-5 py-4 text-slate-500">${[3,4,2][index]} ${month.slice(0,3)} 2026</td><td class="px-5 py-4"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700">Paid</span></td></tr>`).join("")}</tbody></table></div></div>`;
+    }
+
+    function renderPaymentsOld(isAdmin) {
+      const due = !data.rentPaid;
+      return `${sectionHeading(isAdmin ? "Resident accounts" : "Your account", isAdmin ? "Rent overview" : "Rent & payments", isAdmin ? "Track this month’s rent status for your residents." : "Keep track of your monthly rent and payment history.")}${isAdmin ? `<div class="mb-5 grid gap-4 sm:grid-cols-3"><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">Residents</p><p class="mt-2 text-2xl font-extrabold text-slate-900">1</p></article><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">November rent</p><p class="mt-2 text-2xl font-extrabold text-slate-900">₹8,500</p></article><article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft"><p class="text-xs text-slate-400">Payment status</p><p class="mt-2 text-2xl font-extrabold ${due ? "text-amber-600" : "text-forest-600"}">${due ? "Due" : "Paid"}</p></article></div>` : ""}<div class="mb-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]"><div class="overflow-hidden rounded-2xl bg-forest-900 p-6 text-white shadow-soft sm:p-8"><div class="flex items-start justify-between"><div><p class="text-sm font-medium text-white/55">November 2026 · Monthly rent</p><p class="mt-3 text-3xl font-extrabold tracking-tight">₹8,500</p><p class="mt-2 text-xs text-white/55">${due ? "Payment due date was 5 November 2026" : "Paid for November 2026"}</p></div><span class="rounded-full ${due ? "bg-amber-300/15 text-amber-200" : "bg-emerald-300/15 text-emerald-200"} px-3 py-1.5 text-xs font-bold">${due ? "Due" : "Paid"}</span></div>${isAdmin ? `<button data-pay class="mt-7 rounded-xl bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20">${due ? "Mark rent as paid" : "Mark as due"}</button>` : `<button data-pay class="mt-7 rounded-xl bg-[#c6d6a0] px-5 py-3 text-sm font-bold text-forest-900 transition hover:bg-[#d6e1bb]">Pay November rent <i class="fa-solid fa-arrow-right ml-1 text-xs" aria-hidden="true"></i></button>`}</div><div class="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-soft"><p class="text-sm font-semibold text-slate-500">Resident details</p><dl class="mt-5 space-y-4"><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Resident</dt><dd class="font-bold text-slate-700">Aditi Sharma</dd></div><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Room</dt><dd class="font-bold text-slate-700">B-204</dd></div><div class="flex justify-between gap-3 text-sm"><dt class="text-slate-400">Monthly rent</dt><dd class="font-bold text-slate-700">₹8,500</dd></div><div class="flex justify-between gap-3 border-t border-slate-100 pt-4 text-sm"><dt class="text-slate-400">Payment status</dt><dd class="font-bold ${due ? "text-amber-600" : "text-forest-600"}">${due ? "Due" : "Paid"}</dd></div></dl></div></div><div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-soft"><div class="border-b border-slate-100 px-5 py-5 sm:px-6"><h2 class="display font-extrabold text-slate-900">Payment history</h2><p class="mt-1 text-xs text-slate-400">Recent resident rent payments</p></div><div class="overflow-x-auto"><table class="w-full min-w-[560px] text-left text-sm"><thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-400"><tr><th class="px-6 py-3">Month</th><th class="px-6 py-3">Amount</th><th class="px-6 py-3">Date paid</th><th class="px-6 py-3">Status</th></tr></thead><tbody class="divide-y divide-slate-100"><tr><td class="px-6 py-4 font-semibold text-slate-700">November 2026</td><td class="px-6 py-4">₹8,500</td><td class="px-6 py-4 text-slate-400">${due ? "—" : "17 Nov 2026"}</td><td class="px-6 py-4"><span class="rounded-full ${due ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-xs font-bold">${due ? "Due" : "Paid"}</span></td></tr>${["October","September","August"].map((month,index)=>`<tr><td class="px-6 py-4 font-semibold text-slate-700">${month} 2026</td><td class="px-6 py-4">₹8,500</td><td class="px-6 py-4 text-slate-500">${[3,4,2][index]} ${month.slice(0,3)} 2026</td><td class="px-6 py-4"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700">Paid</span></td></tr>`).join("")}</tbody></table></div></div>`;
+    }
+
+    function renderComplaints(isAdmin) {
+      const iconMap = { Electrical: "fa-bolt", Plumbing: "fa-faucet-drip", Cleaning: "fa-broom" };
+      const complaints = isAdmin ? data.complaints : data.complaints.filter(item => item.residentEmail === currentResident.email);
+      const complaintList = complaints.length ? complaints.map(item => {
+        const resident = data.residents.find(member => member.email === item.residentEmail);
+        return `<article class="rounded-xl border border-slate-100 p-4"><div class="flex items-start justify-between gap-3"><div class="flex min-w-0 items-start gap-3"><span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest-50 text-forest-600"><i class="fa-solid ${iconMap[item.category] || "fa-screwdriver-wrench"}" aria-hidden="true"></i></span><div class="min-w-0"><div class="flex flex-wrap items-center gap-2"><h3 class="text-sm font-bold text-slate-800">${escapeHtml(item.category)}</h3>${isAdmin ? `<span class="text-[10px] text-slate-400">${escapeHtml(resident?.name || "Former resident")} · ${escapeHtml(resident?.room || "—")}</span>` : ""}</div><p class="mt-1 text-xs leading-5 text-slate-500">${escapeHtml(item.description)}</p><p class="mt-2 text-[10px] text-slate-400">Submitted ${escapeHtml(item.date)} · #${escapeHtml(item.id)}</p></div></div>${isAdmin ? `<select data-status-id="${escapeHtml(item.id)}" aria-label="Status for complaint ${escapeHtml(item.id)}" class="shrink-0 rounded-full border-0 ${item.status === "Pending" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-[10px] font-bold outline-none"><option ${item.status === "Pending" ? "selected" : ""}>Pending</option><option ${item.status === "Resolved" ? "selected" : ""}>Resolved</option></select>` : `<span class="shrink-0 rounded-full ${item.status === "Pending" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-[10px] font-bold">${escapeHtml(item.status)}</span>`}</div></article>`;
+      }).join("") : `<p class="py-8 text-center text-sm text-slate-400">No requests yet.</p>`;
+      return `${sectionHeading(isAdmin ? "Resident care" : "We’ll take care of it", isAdmin ? "Resident requests" : "Help & maintenance", isAdmin ? "Review resident issues and keep request status up to date." : "Tell us what needs fixing and we’ll follow up as soon as possible.")}<div class="grid items-start gap-5 ${isAdmin ? "" : "xl:grid-cols-[.9fr_1.1fr]"}">${isAdmin ? "" : `<form id="complaint-form" class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><h2 class="display text-base font-extrabold text-slate-900">Raise a new issue</h2><p class="mt-1 text-xs text-slate-400">Our team will follow up as soon as possible.</p><label for="category" class="mb-2 mt-6 block text-xs font-bold text-slate-600">Category</label><select id="category" name="category" required class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm outline-none focus:border-forest-500 focus:ring-4 focus:ring-forest-50"><option value="" disabled selected>Select a category</option><option>Electrical</option><option>Plumbing</option><option>Cleaning</option></select><label for="description" class="mb-2 mt-5 block text-xs font-bold text-slate-600">What’s the issue?</label><textarea id="description" name="description" rows="4" required maxlength="500" placeholder="Please describe the issue and where it is..." class="w-full resize-y rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-forest-500 focus:ring-4 focus:ring-forest-50"></textarea><div class="mt-1 flex justify-between text-[10px] text-slate-400"><span>Include details that can help us resolve it.</span><span id="character-count">0/500</span></div><button type="submit" class="mt-5 w-full rounded-xl bg-forest-800 px-4 py-3 text-sm font-bold text-white transition hover:bg-forest-700"><i class="fa-regular fa-paper-plane mr-2" aria-hidden="true"></i>Submit request</button></form>`}<div class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="mb-5 flex items-center justify-between"><div><h2 class="display text-base font-extrabold text-slate-900">${isAdmin ? "All resident requests" : "Your requests"}</h2><p class="mt-1 text-xs text-slate-400">${isAdmin ? "Change a status to share the update with the resident" : "Follow the progress of your requests"}</p></div><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-500">${complaints.length} total</span></div><div class="space-y-3">${complaintList}</div></div></div>`;
+    }
+
+    function renderNotices(isAdmin) {
+      return `${sectionHeading(isAdmin ? "Keep residents in the loop" : "The latest from Areca", isAdmin ? "Announcements" : "Notice board", isAdmin ? "Post updates that will appear in the student portal straight away." : "Important updates and little things happening around your home.")}<div class="max-w-3xl space-y-4">${isAdmin ? `<form id="notice-form" class="rounded-2xl border border-forest-100 bg-forest-50/70 p-5 sm:p-6"><h2 class="display font-extrabold text-forest-900">Post an announcement</h2><div class="mt-4 grid gap-3 sm:grid-cols-2"><label class="text-xs font-bold text-slate-600">Category<select name="tag" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-normal outline-none focus:border-forest-500"><option>Important</option><option>Facilities</option><option>Community</option></select></label><label class="text-xs font-bold text-slate-600">Title<input name="title" maxlength="90" required placeholder="A short headline" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-normal outline-none focus:border-forest-500"></label></div><label class="mt-3 block text-xs font-bold text-slate-600">Message<textarea name="body" maxlength="500" required rows="3" placeholder="Write an update for residents..." class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-normal outline-none focus:border-forest-500"></textarea></label><button class="mt-3 rounded-xl bg-forest-800 px-4 py-2.5 text-sm font-bold text-white hover:bg-forest-700"><i class="fa-solid fa-paper-plane mr-2" aria-hidden="true"></i>Publish announcement</button></form>` : ""}${data.notices.length ? data.notices.map(notice => `<article class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6"><div class="flex items-center gap-2"><span class="rounded-full ${notice.tag === "Important" ? "bg-amber-50 text-amber-700" : notice.tag === "Facilities" ? "bg-blue-50 text-blue-700" : "bg-emerald-50 text-emerald-700"} px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide">${escapeHtml(notice.tag)}</span><span class="text-xs text-slate-400">${escapeHtml(notice.date)}</span>${isAdmin ? `<button data-delete-notice="${escapeHtml(notice.id)}" class="ml-auto rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-600" aria-label="Delete ${escapeHtml(notice.title)}"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>` : ""}</div><h2 class="mt-4 text-base font-extrabold text-slate-900">${escapeHtml(notice.title)}</h2><p class="mt-2 text-sm leading-6 text-slate-500">${escapeHtml(notice.body)}</p><p class="mt-4 text-xs font-semibold text-slate-400">— ${escapeHtml(notice.author)}</p></article>`).join("") : `<p class="rounded-2xl bg-white p-6 text-sm text-slate-500">No announcements yet.</p>`}</div>`;
+    }
+
+    function attachForms() {
+      const memberForm = document.getElementById("member-form");
+      if (memberForm) {
+        const memberEmail = document.getElementById("member-email");
+        memberEmail.addEventListener("input", () => memberEmail.setCustomValidity(""));
+        memberForm.addEventListener("submit", event => {
+          event.preventDefault();
+          if (!memberForm.reportValidity()) return;
+          const form = new FormData(memberForm);
+          const email = String(form.get("email")).trim().toLowerCase();
+          if (email === adminAccount.email || data.residents.some(resident => resident.email.toLowerCase() === email)) {
+            memberEmail.setCustomValidity("A member with this email already exists.");
+            memberEmail.reportValidity();
+            return;
+          }
+          memberEmail.setCustomValidity("");
+          const resident = {
+            name: String(form.get("name")).trim(),
+            email,
+            password: String(form.get("password")),
+            room: String(form.get("room")).trim(),
+            rent: Number(form.get("rent"))
+          };
+          data.residents.push(resident);
+          data.rentPaidBy[email] = false;
+          if (saveData()) {
+            renderApp();
+            showToast(`Student login created for ${resident.name}. Share their email and password with them.`);
+          }
+        });
+      }
+
+      const complaintForm = document.getElementById("complaint-form");
+      if (complaintForm) {
+        const description = document.getElementById("description");
+        description.addEventListener("input", () => document.getElementById("character-count").textContent = `${description.value.length}/500`);
+        complaintForm.addEventListener("submit", event => {
+          event.preventDefault();
+          if (!complaintForm.reportValidity()) return;
+          const form = new FormData(complaintForm);
+          const details = String(form.get("description")).trim();
+          if (!details) { description.setCustomValidity("Please add a description of the issue."); description.reportValidity(); return; }
+          description.setCustomValidity("");
+          data.complaints.unshift({ id: `AR-${Date.now().toString().slice(-6)}`, residentEmail: currentResident.email, category: String(form.get("category")), description: details, date: new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date()), status: "Pending" });
+          if (saveData()) { renderApp(); showToast("Your request has been shared with the Areca team."); }
+        });
+      }
+      document.querySelectorAll(".meal-form").forEach(form => form.addEventListener("submit", event => {
+        event.preventDefault();
+        const meal = new FormData(form).get("meal").toString().trim();
+        if (!meal) return;
+        data.meal[form.dataset.meal] = meal;
+        if (saveData()) { renderApp(); showToast("Menu updated for all residents."); }
+      }));
+      const noticeForm = document.getElementById("notice-form");
+      if (noticeForm) noticeForm.addEventListener("submit", event => {
+        event.preventDefault();
+        if (!noticeForm.reportValidity()) return;
+        const form = new FormData(noticeForm);
+        data.notices.unshift({ id: `notice-${Date.now()}`, tag: String(form.get("tag")), title: String(form.get("title")).trim(), body: String(form.get("body")).trim(), date: new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date()), author: "Areca Admin" });
+        if (saveData()) { renderApp(); showToast("Announcement published to the student portal."); }
+      });
+      document.querySelectorAll("[data-delete-notice]").forEach(button => button.addEventListener("click", () => {
+        data.notices = data.notices.filter(notice => notice.id !== button.dataset.deleteNotice);
+        if (saveData()) { renderApp(); showToast("Announcement removed."); }
+      }));
+    }
+
+    function updateComplaintStatus(id, status) {
+      const complaint = data.complaints.find(item => item.id === id);
+      if (!complaint || !["Pending", "Resolved"].includes(status)) return;
+      complaint.status = status;
+      if (saveData()) { renderApp(); showToast(`Request marked ${status.toLowerCase()}. Student portal updated.`); }
+    }
+
+    function showPaymentDemo() {
+      if (currentRole === "admin") {
+        toggleResidentRent(currentResident.email);
+      } else {
+        showToast("Payment demo only — connect a payment gateway to accept rent.");
+      }
+    }
+
+    function toggleResidentRent(email) {
+      data.rentPaidBy[email] = !data.rentPaidBy[email];
+      if (saveData()) {
+        renderApp();
+        const resident = data.residents.find(member => member.email === email);
+        showToast(`Rent marked ${data.rentPaidBy[email] ? "paid" : "due"} for ${resident?.name || "resident"}.`);
+      }
+    }
+
+    function setSidebarOpen(isOpen) {
+      document.getElementById("sidebar").classList.toggle("-translate-x-full", !isOpen);
+      document.getElementById("sidebar-backdrop").classList.toggle("hidden", !isOpen);
+      document.getElementById("open-sidebar").setAttribute("aria-expanded", String(isOpen));
+    }
+
+    document.querySelectorAll(".login-tab").forEach(tab => tab.addEventListener("click", () => setLoginRole(tab.dataset.role)));
+    document.getElementById("login-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const email = document.getElementById("login-email").value.trim().toLowerCase();
+      const password = document.getElementById("login-password").value;
+      const account = selectedLoginRole === "admin"
+        ? (email === adminAccount.email ? adminAccount : null)
+        : data.residents.find(resident => resident.email.toLowerCase() === email);
+      if (!account || password !== account.password) {
+        const error = document.getElementById("login-error");
+        error.textContent = `Those details don’t match the ${selectedLoginRole} demo account. Try the credentials shown below.`;
+        error.classList.remove("hidden");
+        return;
+      }
+      logIn(selectedLoginRole, selectedLoginRole === "admin" ? adminAccount : account);
+    });
+    document.getElementById("logout-button").addEventListener("click", logOut);
+    document.getElementById("open-sidebar").addEventListener("click", () => setSidebarOpen(true));
+    document.getElementById("close-sidebar").addEventListener("click", () => setSidebarOpen(false));
+    document.getElementById("sidebar-backdrop").addEventListener("click", () => setSidebarOpen(false));
+    document.addEventListener("keydown", event => { if (event.key === "Escape") setSidebarOpen(false); });
+    window.addEventListener("storage", event => {
+      if (event.key !== STORAGE_KEY || !event.newValue) return;
+      try {
+        const updated = JSON.parse(event.newValue);
+        if (!Array.isArray(updated.complaints) || !Array.isArray(updated.notices) || !Array.isArray(updated.residents) || !updated.meal) throw new Error("Shared portal data is invalid.");
+        data = updated;
+        if (currentRole === "student") {
+          currentResident = data.residents.find(resident => resident.email === currentResident?.email);
+          if (!currentResident) { logOut(); showToast("This resident account is no longer available."); return; }
+        }
+        if (document.getElementById("app-screen").classList.contains("active")) renderApp();
+      } catch (error) {
+        console.error("Could not sync Areca portal data from another tab:", error);
+        showToast("Could not sync updates from the other portal.");
+      }
+    });
+    setLoginRole("student");
+  </script>
+</body>
+</html>
